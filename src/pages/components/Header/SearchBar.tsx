@@ -6,7 +6,7 @@ type SearchBarProps = {};
 const SearchBar: React.FC<SearchBarProps> = () => {
   return (
     <button className="">
-      <div className="lg:hidden mr-2">
+      <div className="lg:hidden mr-3">
         <IconWrapper>
           <span>
             <svg height="16" viewBox="0 0 16 16" version="1.1" width="16">
