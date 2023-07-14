@@ -20,7 +20,7 @@ module.exports = {
         'primary': '#CDD9E5',
         'secondary': '#ADBAC7',
         'header-icon': '#49525C',
-        'header-underline': '#bf6957',
+        'header-underline': '#EC775C',
         'green': '#347D39',
         'blue': '#2763D9',
         'profile-button': '#373e47',

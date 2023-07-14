@@ -5,8 +5,8 @@ type SearchBarProps = {};
 
 const SearchBar: React.FC<SearchBarProps> = () => {
   return (
-    <div className="lg:border border-header-icon border-solid rounded-md lg:w-[350px] p-1 mr-3 lg:flex lg:">
-      <button className="lg:hidden">
+    <div className="lg:border border-header-icon border-solid rounded-md lg:w-[350px] lg:p-1 mr-3 lg:flex justify-center items-center ">
+      <button className="block lg:hidden">
         <IconWrapper>
           <span>
             <svg height="16" viewBox="0 0 16 16" version="1.1" width="16">
@@ -30,7 +30,7 @@ const SearchBar: React.FC<SearchBarProps> = () => {
           to search
         </p>
       </button>
-      <button className="block ml-auto border-l border-solid border-header-icon pl-1">
+      <button className="hidden lg:block ml-auto border-l border-solid border-header-icon pl-1">
         <svg height="16" viewBox="0 0 16 16" version="1.1" width="16">
           <path d="m6.354 8.04-4.773 4.773a.75.75 0 1 0 1.061 1.06L7.945 8.57a.75.75 0 0 0 0-1.06L2.642 2.206a.75.75 0 0 0-1.06 1.061L6.353 8.04ZM8.75 11.5a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5Z"></path>
         </svg>
