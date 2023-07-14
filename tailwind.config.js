@@ -8,7 +8,12 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        xxs: '544px'
+        xxs: '544px',
+        nav1: '180px',
+        nav2: '345px',
+        nav3: '437px',
+        nav4: '542px',
+        nav5: '651px'
       },
       colors: {
         'header': '#1C2128',
@@ -18,9 +23,9 @@ module.exports = {
         'header-underline': '#bf6957',
         'green': '#347D39',
         'blue': '#2763D9',
-        'profile-button': '#373E47',
-        'body-mobile': '#2D333B',
-        'body-desktop': '#22272E'
+        'profile-button': '#373e47',
+        'body-mobile': '#2d333b',
+        'body-desktop': '#22272e'
       }
     },
   },
