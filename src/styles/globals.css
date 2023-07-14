@@ -9,3 +9,9 @@ svg {
 svg.github {
   fill: rgb(205, 217, 229);
 }
+
+@layer components {
+  .debug {
+    @apply outline outline-1 outline-red-600;
+  }
+}

@@ -13,7 +13,8 @@ module.exports = {
         nav2: '345px',
         nav3: '437px',
         nav4: '542px',
-        nav5: '651px'
+        nav5: '651px',
+        main1: '767px'
       },
       colors: {
         'header': '#1C2128',
@@ -21,8 +22,8 @@ module.exports = {
         'secondary': '#ADBAC7',
         'header-icon': '#49525C',
         'header-underline': '#EC775C',
-        'green': '#347D39',
-        'blue': '#2763D9',
+        'green': 'rgb(87, 171, 90)',
+        'blue': ' rgb(83, 155, 245)',
         'profile-button': '#373e47',
         'body-mobile': '#2d333b',
         'body-desktop': '#22272e'
