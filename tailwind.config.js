@@ -23,10 +23,12 @@ module.exports = {
         'header-icon': '#49525C',
         'header-underline': '#EC775C',
         'green': 'rgb(87, 171, 90)',
+        'dark-green': '#347D39',
         'blue': ' rgb(83, 155, 245)',
         'profile-button': '#373e47',
         'body-mobile': '#2d333b',
-        'body-desktop': '#22272e'
+        'body-desktop': '#22272e',
+        'repo-type': 'rgb(118, 131, 144)'
       }
     },
   },

@@ -5,7 +5,7 @@ type RepositoriesProps = {};
 
 const Repositories: React.FC<RepositoriesProps> = () => {
   return (
-    <div>
+    <div className="border-t border-solid border-header-icon mt-3">
       {Array.from(Array(30), (e, index) => (
         <Repository key={index} />
       ))}

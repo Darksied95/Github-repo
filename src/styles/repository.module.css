@@ -1,0 +1,23 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "RepoHeader ..."
+    "RepoHeader Star"
+    "RepoHeader Star"
+    ".........  Star"
+    "Summary    Star"
+    "Summary    ....";
+}
+
+.repo-Header {
+  grid-area: RepoHeader;
+}
+
+.star {
+  grid-area: Star;
+}
+
+.summary {
+  grid-area: Summary;
+}
