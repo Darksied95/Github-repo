@@ -5,7 +5,7 @@ type ProfileProps = {};
 
 const Profile: React.FC<ProfileProps> = () => {
   return (
-    <div className="main1:w-[254.4px]">
+    <div className="main1:w-[254.4px] main2:w-[294.4px]">
       <div className="flex gap-3 items-center mb-6 main1:block main1:mb-4">
         <Image
           src="/Rajah.jpeg"
@@ -13,7 +13,7 @@ const Profile: React.FC<ProfileProps> = () => {
           width={72}
           height={72}
           unoptimized
-          className="rounded-full w-[16%] aspect-square main1:w-[254.4px] main1:mb-3"
+          className="rounded-full w-[16%] aspect-square main1:w-full main1:mb-3 "
         />
         <h1>
           <span className="text-primary font-semibold text-2xl block leading-7">
