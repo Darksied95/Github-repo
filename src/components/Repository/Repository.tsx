@@ -9,7 +9,7 @@ const Repository: React.FC<RepositoryProps> = () => {
       className={`${style["grid-container"]} border-b border-solid border-header-icon pt-6 pb-6`}
     >
       <div className={`${style["repo-header"]} flex items-center  gap-3 `}>
-        <h1 className="text-blue  text-lg  font-medium">Github-repo</h1>
+        <h1 className="text-blue  text-xl  font-medium">Github-repo</h1>
         <span className="text-repo-type text-xs font-semibold px-[.3rem] border border-solid border-header-icon rounded-xl">
           Public
         </span>

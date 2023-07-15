@@ -15,7 +15,8 @@ module.exports = {
         nav4: '542px',
         nav5: '651px',
         main1: '767px',
-        main2: '1012px'
+        main2: '1012px',
+        main3: '1320px'
       },
       colors: {
         'header': '#1C2128',

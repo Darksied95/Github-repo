@@ -9,6 +9,14 @@ const Repositories: React.FC<RepositoriesProps> = () => {
       {Array.from(Array(30), (e, index) => (
         <Repository key={index} />
       ))}
+      <div className="text-sm ml-8 main1:mx-auto   w-fit mt-3 pb-8">
+        <button disabled className="text-header-icon mr-3">
+          &lt; Previous
+        </button>
+        <button disabled className="text-blue">
+          Next &gt;
+        </button>
+      </div>
     </div>
   );
 };
