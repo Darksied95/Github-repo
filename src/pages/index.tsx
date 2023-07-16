@@ -10,16 +10,18 @@ import { useDispatch } from "react-redux";
 export default function Home() {
   const dispatch = useDispatch();
 
-  const { profileData, repoData, isLoading } = useFetch("darksied95");
+  const { profileData, repoData, isLoading, starredData } =
+    useFetch("darksied95");
   useEffect(() => {
     dispatch(
       updateGithubProfile({
         profile: profileData?.data,
         repos: repoData?.data,
         loading: isLoading,
+        starCount: starredData,
       })
     );
-  }, [dispatch, isLoading, profileData, repoData]);
+  }, [dispatch, isLoading, profileData, repoData, starredData]);
 
   return (
     <>

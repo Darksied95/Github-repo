@@ -7,8 +7,14 @@ export interface GithubState {
   isLoading: Boolean;
   profile: ApiResponse;
   repos: ApiResponse;
+  starCount: number;
 }
-const initialState: GithubState = { isLoading: true, profile: {}, repos: {} };
+const initialState: GithubState = {
+  isLoading: true,
+  profile: {},
+  repos: {},
+  starCount: 0,
+};
 
 const gitHubSlice = createSlice({
   name: "github",
@@ -19,6 +25,7 @@ const gitHubSlice = createSlice({
         isLoading: action.payload.loading,
         profile: action.payload.profile,
         repos: action.payload.repos,
+        starCount: action.payload.starCount,
       };
     },
   },
