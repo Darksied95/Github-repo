@@ -1,14 +1,18 @@
 import React from "react";
 import Repository from "../Repository/Repository";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 type RepositoriesProps = {};
 
 const Repositories: React.FC<RepositoriesProps> = () => {
+  const { repos } = useSelector((store: RootState) => store);
+  console.log(repos);
+
   return (
     <div className="border-t border-solid border-header-icon mt-3">
-      {Array.from(Array(30), (e, index) => (
-        <Repository key={index} />
-      ))}
+      {repos &&
+        repos.map((repo: any) => <Repository key={repo.id} repoData={repo} />)}
       <div className="text-sm ml-8 main1:mx-auto   w-fit mt-3 pb-8">
         <button disabled className="text-header-icon mr-3">
           &lt; Previous

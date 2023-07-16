@@ -25,6 +25,8 @@ function useFetch(user: string): Profile {
   const { data: repoData } = useQuery("repo", fetchRepo);
   const { data: starredData } = useQuery("star", fetchStarredRepo);
 
+  console.log(repoData);
+
   return {
     profileData,
     repoData,

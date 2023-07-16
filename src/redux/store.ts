@@ -1,18 +1,20 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-type ApiResponse = {
+type ProfileResponse = {
   [key: string]: any;
 };
+
+type ReposResponse = [{ [key: string]: any }?];
 export interface GithubState {
   isLoading: Boolean;
-  profile: ApiResponse;
-  repos: ApiResponse;
+  profile: ProfileResponse;
+  repos: ReposResponse;
   starCount: number;
 }
 const initialState: GithubState = {
   isLoading: true,
   profile: {},
-  repos: {},
+  repos: [],
   starCount: 0,
 };
 
