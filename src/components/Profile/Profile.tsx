@@ -1,25 +1,42 @@
+import { RootState } from "@/redux/store";
 import Image from "next/image";
 import React from "react";
+import { useSelector } from "react-redux";
 
 type ProfileProps = {};
 
 const Profile: React.FC<ProfileProps> = () => {
+  const { profile } = useSelector((state: RootState) => state);
+  console.log(profile);
+
+  const {
+    avatar_url,
+    login,
+    bio,
+    followers,
+    following,
+    name,
+    twitter_username,
+    location,
+  } = profile;
   return (
     <div className="main1:w-[254.4px] main2:w-[294.4px]">
       <div className="flex gap-3 items-center mb-6 main1:block main1:mb-4">
-        <Image
-          src="/Rajah.jpeg"
-          alt="/"
-          width={72}
-          height={72}
-          unoptimized
-          className="rounded-full w-[16%] aspect-square main1:w-full main1:mb-3 "
-        />
+        {avatar_url && (
+          <Image
+            src={avatar_url}
+            alt="/"
+            width={72}
+            height={72}
+            unoptimized
+            className="rounded-full w-[16%] aspect-square main1:w-full main1:mb-3 "
+          />
+        )}
         <h1>
           <span className="text-primary font-semibold text-2xl block leading-7">
-            Aliyu Efe
+            {name}
           </span>
-          <span className="text-slate-500 font-thin text-xl">Darksied95</span>
+          <span className="text-slate-500 font-thin text-xl">{login}</span>
         </h1>
       </div>
       <div className="text-primary">
@@ -29,9 +46,7 @@ const Profile: React.FC<ProfileProps> = () => {
           </svg>
           <span>Set status</span>
         </button>
-        <p className="my-2 main1:mb-4">
-          I&apos;m a frontend developer from Nigeria.
-        </p>
+        <p className="my-2 main1:mb-4">{bio}</p>
         <button className="w-full bg-header-icon p-[.3rem] rounded-md font-semibold text-sm mb-5">
           Edit profile
         </button>
@@ -47,7 +62,7 @@ const Profile: React.FC<ProfileProps> = () => {
               >
                 <path d="m12.596 11.596-3.535 3.536a1.5 1.5 0 0 1-2.122 0l-3.535-3.536a6.5 6.5 0 1 1 9.192-9.193 6.5 6.5 0 0 1 0 9.193Zm-1.06-8.132v-.001a5 5 0 1 0-7.072 7.072L8 14.07l3.536-3.534a5 5 0 0 0 0-7.072ZM8 9a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 9Z"></path>
               </svg>
-              <a href="">Nigeria</a>
+              <a href="">{location}</a>
             </li>
             <li className="flex items-center gap-2 font-normal text-sm mb-2">
               <svg
@@ -64,7 +79,7 @@ const Profile: React.FC<ProfileProps> = () => {
                   fill="currentColor"
                 ></path>
               </svg>
-              <a href="">@Darksied95</a>
+              <a href="">@{twitter_username}</a>
             </li>
           </ul>
           <div className="flex items-center order-1 main1:pb-5">
