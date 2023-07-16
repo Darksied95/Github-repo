@@ -7,8 +7,6 @@ type HeaderIconsListProps = {
 };
 
 const HeaderIconsList: React.FC<HeaderIconsListProps> = ({ ImageUrl }) => {
-  console.log(ImageUrl);
-  ImageUrl = "https://avatars.githubusercontent.com/u/91638745?v=4";
   return (
     <ul className="flex  justify-center items-center">
       <span className="hidden xxs:inline-block mr-3 h-[60%] w-[1px] bg-header-icon " />
@@ -55,9 +53,9 @@ const HeaderIconsList: React.FC<HeaderIconsListProps> = ({ ImageUrl }) => {
         </a>
       </li>
 
-      {ImageUrl && (
-        <li className="mr-2">
-          <a href="">
+      <li className="mr-2">
+        <a href="">
+          {ImageUrl && (
             <Image
               src={ImageUrl}
               alt="Rajah"
@@ -65,9 +63,9 @@ const HeaderIconsList: React.FC<HeaderIconsListProps> = ({ ImageUrl }) => {
               height={32}
               className="rounded-full"
             />
-          </a>
-        </li>
-      )}
+          )}
+        </a>
+      </li>
     </ul>
   );
 };

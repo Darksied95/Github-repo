@@ -1,8 +1,12 @@
 import React from "react";
+import { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
 
 type NavBarProps = {};
 
 const NavBar: React.FC<NavBarProps> = () => {
+  const { profile, starCount } = useSelector((store: RootState) => store);
+
   return (
     <nav className="bg-header text-primary text-sm px-3 pt-0">
       <ul className="flex gap-3">
@@ -21,7 +25,7 @@ const NavBar: React.FC<NavBarProps> = () => {
             </svg>
             <span>Repositories</span>
             <span className="bg-header-icon font-semibold text-xs py-1 px-[.4rem] rounded-full ">
-              49
+              {profile?.["public_repos"]}
             </span>
           </a>
         </li>
@@ -48,7 +52,7 @@ const NavBar: React.FC<NavBarProps> = () => {
             </svg>
             <span>Stars</span>
             <span className="bg-header-icon font-semibold text-xs py-1 px-[.4rem] rounded-full ">
-              11
+              {starCount}
             </span>
           </a>
         </li>
