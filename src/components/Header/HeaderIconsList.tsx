@@ -2,9 +2,13 @@ import React from "react";
 import IconWrapper from "../IconWrapper/IconWrapper";
 import Image from "next/image";
 
-type HeaderIconsListProps = {};
+type HeaderIconsListProps = {
+  ImageUrl: string | undefined;
+};
 
-const HeaderIconsList: React.FC<HeaderIconsListProps> = () => {
+const HeaderIconsList: React.FC<HeaderIconsListProps> = ({ ImageUrl }) => {
+  console.log(ImageUrl);
+  ImageUrl = "https://avatars.githubusercontent.com/u/91638745?v=4";
   return (
     <ul className="flex  justify-center items-center">
       <span className="hidden xxs:inline-block mr-3 h-[60%] w-[1px] bg-header-icon " />
@@ -50,17 +54,20 @@ const HeaderIconsList: React.FC<HeaderIconsListProps> = () => {
           </IconWrapper>
         </a>
       </li>
-      <li className="mr-2">
-        <a href="">
-          <Image
-            src="/Rajah.jpeg"
-            alt="Rajah"
-            width={32}
-            height={32}
-            className="rounded-full"
-          />
-        </a>
-      </li>
+
+      {ImageUrl && (
+        <li className="mr-2">
+          <a href="">
+            <Image
+              src={ImageUrl}
+              alt="Rajah"
+              width={32}
+              height={32}
+              className="rounded-full"
+            />
+          </a>
+        </li>
+      )}
     </ul>
   );
 };
