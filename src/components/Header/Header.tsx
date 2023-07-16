@@ -2,6 +2,9 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import HeaderIconsList from "./HeaderIconsList";
 import IconWrapper from "../IconWrapper/IconWrapper";
+import { useSelector } from "react-redux";
+import store from "@/redux/store";
+import { updateProfile } from "@/redux/store";
 
 type HeaderProps = {};
 
