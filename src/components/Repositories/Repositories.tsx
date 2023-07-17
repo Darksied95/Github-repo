@@ -6,8 +6,12 @@ import { RootState } from "@/redux/store";
 type RepositoriesProps = {};
 
 const Repositories: React.FC<RepositoriesProps> = () => {
-  const { repos } = useSelector((store: RootState) => store);
-  console.log(repos);
+  let { repos } = useSelector((store: RootState) => store);
+  // if (repos) {
+  //   repos = [...repos].sort(
+  //     (a, b) => new Date(a.updated_at) - new Date(b.updated_at)
+  //   );
+  // }
 
   return (
     <div className="border-t border-solid border-header-icon mt-3">

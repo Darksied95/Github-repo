@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "@/styles/repository.module.css";
+import { GetStaticProps } from "next";
 
 type RepoDataType = {
   name: string;
   private: boolean;
+  language: string | null;
+  languages_url: string;
 };
 
 type RepositoryProps = {
@@ -11,7 +14,20 @@ type RepositoryProps = {
 };
 
 const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
-  const { name, private: notPublic } = repoData;
+  const { name, private: notPublic, language, languages_url } = repoData;
+  const [updatedLanguage, setUpdatedLanguage] = useState(language);
+  console.log(updatedLanguage);
+
+  useEffect(() => {
+    if (!language) {
+      const getLanguage = async () => {
+        const data = await fetch(languages_url);
+        const res = await data.json();
+        setUpdatedLanguage(Object.keys(res)[0]);
+      };
+      getLanguage();
+    }
+  }, [language, languages_url]);
 
   return (
     <div
@@ -26,7 +42,7 @@ const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
 
       <div className={`${style.summary} flex items-center gap-1`}>
         <span className="inline-block aspect-square w-3 bg-blue rounded-full"></span>
-        <p className="text-repo-type text-xs mr-2">TypeScript</p>
+        <p className="text-repo-type text-xs mr-2">{updatedLanguage}</p>
         <p className="text-repo-type text-xs">Updated yesterday</p>
       </div>
 
