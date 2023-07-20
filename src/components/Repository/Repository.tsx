@@ -37,7 +37,6 @@ const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
         setBackgroundColor(
           colorPicker[(language || "") as keyof typeof colorPicker]
         );
-        console.log(backgroundColor);
       };
       getLanguage();
     }
