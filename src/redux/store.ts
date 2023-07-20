@@ -6,13 +6,11 @@ type ProfileResponse = {
 
 type ReposResponse = [{ [key: string]: any }?];
 export interface GithubState {
-  isLoading: Boolean;
   profile: ProfileResponse;
   repos: ReposResponse;
   starCount: number;
 }
 const initialState: GithubState = {
-  isLoading: true,
   profile: {},
   repos: [],
   starCount: 0,
@@ -24,7 +22,6 @@ const gitHubSlice = createSlice({
   reducers: {
     updateGithubProfile: (state, action) => {
       return {
-        isLoading: action.payload.loading,
         profile: action.payload.profile,
         repos: action.payload.repos,
         starCount: action.payload.starCount,

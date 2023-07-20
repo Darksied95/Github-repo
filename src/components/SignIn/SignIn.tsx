@@ -1,8 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { updateGithubProfile } from "@/redux/store";
+import { useRouter } from "next/router";
 
 type SignInProps = {};
 
 const SignIn: React.FC<SignInProps> = () => {
+  const [username, setUsername] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsLoading(true);
+
+    if (!username) {
+      setIsLoading(false);
+      return alert("Input a username dumb dumb");
+    }
+    try {
+      const { data: profileData } = await axios.get(
+        `https://api.github.com/users/${username}`
+      );
+      const { data: repoData } = await axios.get(
+        `https://api.github.com/users/${username}/repos`
+      );
+      const { data: starredData } = await axios.get(
+        `https://api.github.com/users/${username}/starred`
+      );
+
+      dispatch(
+        updateGithubProfile({
+          profile: profileData,
+          repos: repoData,
+          starCount: starredData.length,
+        })
+      );
+      router.push("/repository");
+    } catch (error: any) {
+      if (error.response.request.status == 404) {
+        setIsLoading(false);
+
+        return alert("How do you not know your username???");
+      }
+      alert("Something went wrong, please try again");
+    }
+    setIsLoading(false);
+  }
+
   return (
     <main className="bg-dark min-h-screen ">
       <div className=" max-w-xs mx-auto pt-px">
@@ -18,7 +65,10 @@ const SignIn: React.FC<SignInProps> = () => {
         <h1 className="text-white text-xl font-thin text-center mb-7">
           Provide GitHub Username
         </h1>
-        <form className="text-white  p-4 bg-signin-Form  mb-5">
+        <form
+          className="text-white  p-4 bg-signin-Form  mb-5"
+          onSubmit={handleSubmit}
+        >
           <label htmlFor="username" className="block text-sm font-normal">
             Username
           </label>
@@ -27,9 +77,13 @@ const SignIn: React.FC<SignInProps> = () => {
             className=" w-full py-1 my-2 pl-2 bg-transparent rounded-lg text-primary text-sm 
                   border border-solid border-header-icon 
                   focus:outline-none focus:border-blue focus:border-2"
+            onChange={(e) => setUsername(e.target.value)}
           />
-          <button className="bg-dark-green block w-full rounded-md py-1">
-            Go to repository
+          <button
+            className="bg-dark-green block w-full rounded-md py-1"
+            type="submit"
+          >
+            {!isLoading ? "Go to repository" : "Fetching Repository..."}
           </button>
         </form>
         <p className="text-white font-light text-center border border-solid border-header-icon py-3 rounded-md">
