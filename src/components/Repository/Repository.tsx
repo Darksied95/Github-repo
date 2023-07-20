@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import style from "@/styles/repository.module.css";
-import { GetStaticProps } from "next";
+import { dateConverter, colorPicker } from "@/helpers";
 
 type RepoDataType = {
   name: string;
   private: boolean;
   language: string | null;
   languages_url: string;
+  updated_at: string;
 };
 
 type RepositoryProps = {
@@ -14,20 +15,31 @@ type RepositoryProps = {
 };
 
 const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
-  const { name, private: notPublic, language, languages_url } = repoData;
+  const {
+    name,
+    private: notPublic,
+    language,
+    languages_url,
+    updated_at,
+  } = repoData;
   const [updatedLanguage, setUpdatedLanguage] = useState(language);
-  console.log(updatedLanguage);
+  const [backgroundColor, setBackgroundColor] = useState(
+    colorPicker(language || "")
+  );
 
   useEffect(() => {
     if (!language) {
       const getLanguage = async () => {
         const data = await fetch(languages_url);
         const res = await data.json();
-        setUpdatedLanguage(Object.keys(res)[0]);
+        const language = Object.keys(res)[0];
+        setUpdatedLanguage(language);
+        setBackgroundColor(colorPicker(language || ""));
+        console.log(backgroundColor);
       };
       getLanguage();
     }
-  }, [language, languages_url]);
+  }, [backgroundColor, language, languages_url]);
 
   return (
     <div
@@ -41,9 +53,16 @@ const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
       </div>
 
       <div className={`${style.summary} flex items-center gap-1`}>
-        <span className="inline-block aspect-square w-3 bg-blue rounded-full"></span>
+        {updatedLanguage && (
+          <span
+            className={`inline-block aspect-square w-3  rounded-full `}
+            style={{ backgroundColor }}
+          ></span>
+        )}
         <p className="text-repo-type text-xs mr-2">{updatedLanguage}</p>
-        <p className="text-repo-type text-xs">Updated yesterday</p>
+        <p className="text-repo-type text-xs">
+          updated {dateConverter(updated_at)}
+        </p>
       </div>
 
       <div
