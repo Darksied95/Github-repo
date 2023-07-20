@@ -1,4 +1,4 @@
-function dateConverter(date: Date) {
+function dateConverter(date: string) {
   const currentDate = new Date();
   const passedDate = new Date(date);
   const MILLISECOND_IN_A_WEEK = 604800000;
@@ -20,6 +20,14 @@ function dateConverter(date: Date) {
   } else if (currentDate.getDay() - passedDate.getDay() >= 1) {
     let day = currentDate.getDay() - passedDate.getDay();
     return day === 1 ? "A day ago" : `${day} days ago`;
+  } else if (currentDate.getHours() - passedDate.getHours() >= 1) {
+    let hour = currentDate.getHours() - passedDate.getHours();
+    return hour === 1 ? "An hour ago" : `${hour} hours ago`;
+  } else if (currentDate.getMinutes() - passedDate.getMinutes() >= 1) {
+    let minute = currentDate.getMinutes() - passedDate.getMinutes();
+    return minute === 1 ? "A minute ago" : `${minute} minutes ago`;
   }
-  return "";
+  return "recently";
 }
+
+export { dateConverter };
