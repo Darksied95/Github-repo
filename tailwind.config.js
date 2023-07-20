@@ -30,7 +30,9 @@ module.exports = {
         'profile-button': '#373e47',
         'body-mobile': '#2d333b',
         'body-desktop': '#22272e',
-        'repo-type': 'rgb(118, 131, 144)'
+        'repo-type': 'rgb(118, 131, 144)',
+        'dark': '#0D1117',
+        'signin-Form': '#161B22',
       }
     },
   },
