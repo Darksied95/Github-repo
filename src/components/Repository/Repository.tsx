@@ -23,8 +23,8 @@ const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
     updated_at,
   } = repoData;
   const [updatedLanguage, setUpdatedLanguage] = useState(language);
-  const [backgroundColor, setBackgroundColor] = useState(
-    colorPicker(language || "")
+  const [backgroundColor, setBackgroundColor] = useState<string>(
+    colorPicker[(language || "") as keyof typeof colorPicker]
   );
 
   useEffect(() => {
@@ -34,7 +34,9 @@ const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
         const res = await data.json();
         const language = Object.keys(res)[0];
         setUpdatedLanguage(language);
-        setBackgroundColor(colorPicker(language || ""));
+        setBackgroundColor(
+          colorPicker[(language || "") as keyof typeof colorPicker]
+        );
         console.log(backgroundColor);
       };
       getLanguage();
