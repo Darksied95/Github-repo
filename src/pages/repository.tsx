@@ -22,12 +22,12 @@ const Repository: React.FC<repositoryProps> = () => {
 
   if (!profile.login) return <div />;
   return (
-    <>
+    <div>
       <Header />
       <NavBar />
       <Main />
       <Footer />
-    </>
+    </div>
   );
 };
 
