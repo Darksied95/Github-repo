@@ -40,7 +40,7 @@ const SignIn: React.FC<SignInProps> = () => {
       );
       router.push("/repository");
     } catch (error: any) {
-      if (error.response.request.status == 404) {
+      if (error?.response?.request?.status == 404) {
         setIsLoading(false);
 
         return alert("How do you not know your username???");

@@ -20,7 +20,7 @@ const Repository: React.FC<repositoryProps> = () => {
     }
   });
 
-  if (!profile.login) return <div></div>;
+  if (!profile.login) return <div />;
   return (
     <>
       <Header />
