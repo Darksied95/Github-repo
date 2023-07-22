@@ -25,7 +25,8 @@ const SignIn: React.FC<SignInProps> = () => {
         `https://api.github.com/users/${username}`
       );
       const { data: repoData } = await axios.get(
-        `https://api.github.com/users/${username}/repos`
+        `https://api.github.com/users/${username}/repos?sort=pushed&direction=desc&page=2`
+        // `/users/:username/repos?sort=updated&direction=desc`
       );
       const { data: starredData } = await axios.get(
         `https://api.github.com/users/${username}/starred`
@@ -38,6 +39,9 @@ const SignIn: React.FC<SignInProps> = () => {
           starCount: starredData.length,
         })
       );
+
+      console.log(repoData);
+
       router.push("/repository");
     } catch (error: any) {
       if (error?.response?.request?.status == 404) {
