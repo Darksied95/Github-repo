@@ -2,6 +2,7 @@ function dateConverter(date: string) {
   const currentDate = new Date();
   const passedDate = new Date(date);
   const MILLISECOND_IN_A_WEEK = 604800000;
+
   if (passedDate.getFullYear() !== currentDate.getFullYear()) {
     let [, month, date, year] = passedDate.toString().split(" ");
     return `${month} ${date}, ${year}`;
@@ -14,10 +15,12 @@ function dateConverter(date: string) {
     (currentDate.getTime() - passedDate.getTime()) / MILLISECOND_IN_A_WEEK >=
     1
   ) {
-    const week = Math.floor(currentDate.getTime() - passedDate.getTime());
+    const week = Math.round(
+      (currentDate.getTime() - passedDate.getTime()) / MILLISECOND_IN_A_WEEK
+    );
     return week === 1 ? "last week" : `${week} weeks ago`;
-  } else if (currentDate.getDay() - passedDate.getDay() >= 1) {
-    let day = currentDate.getDay() - passedDate.getDay();
+  } else if (currentDate.getDate() - passedDate.getDate() >= 1) {
+    let day = currentDate.getDate() - passedDate.getDate();
     return day === 1 ? "yesterday" : `${day} days ago`;
   } else if (currentDate.getHours() - passedDate.getHours() >= 1) {
     let hour = currentDate.getHours() - passedDate.getHours();

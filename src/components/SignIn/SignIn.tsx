@@ -25,7 +25,7 @@ const SignIn: React.FC<SignInProps> = () => {
         `https://api.github.com/users/${username}`
       );
       const { data: repoData } = await axios.get(
-        `https://api.github.com/users/${username}/repos?sort=pushed&direction=desc&page=2`
+        `https://api.github.com/users/${username}/repos?sort=pushed&direction=desc&page=1`
         // `/users/:username/repos?sort=updated&direction=desc`
       );
       const { data: starredData } = await axios.get(
