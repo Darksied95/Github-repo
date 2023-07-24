@@ -6,7 +6,8 @@ type RepoDataType = {
   private: boolean;
   language: string | null;
   languages_url: string;
-  updated_at: string;
+  pushed_at: string;
+  html_url: string;
 };
 
 type RepositoryProps = {
@@ -19,7 +20,8 @@ const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
     private: notPublic,
     language,
     languages_url,
-    updated_at,
+    pushed_at,
+    html_url,
   } = repoData;
   const [updatedLanguage, setUpdatedLanguage] = useState(language);
   const [backgroundColor, setBackgroundColor] = useState<string>(
@@ -42,12 +44,12 @@ const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
   }, [backgroundColor, language, languages_url]);
 
   return (
-    <div className=" border-b border-solid border-header-icon pt-6 pb-6 relative">
+    <li className=" border-b border-solid border-header-icon pt-6 pb-6 relative">
       <div className=" max-w-[89%] ">
         <h1 className="mb-5">
           <a
-            href="/name"
-            className="text-blue  text-xl  font-medium mr-3 break-all "
+            href={html_url}
+            className="text-blue  text-xl  font-medium mr-3 break-all hover:underline "
           >
             {name}
           </a>
@@ -65,7 +67,7 @@ const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
           )}
           <p className="text-repo-type text-xs mr-2">{updatedLanguage}</p>
           <p className="text-repo-type text-xs">
-            updated {dateConverter(updated_at)}
+            updated {dateConverter(pushed_at)}
           </p>
         </div>
       </div>
@@ -83,7 +85,7 @@ const Repository: React.FC<RepositoryProps> = ({ repoData }) => {
           </svg>
         </button>
       </div>
-    </div>
+    </li>
   );
 };
 export default Repository;

@@ -9,6 +9,17 @@ svg {
 svg.github {
   fill: rgb(205, 217, 229);
 }
+html {
+  scrollbar-color: #ff0000 #f0f0f0;
+}
+
+::-webkit-scrollbar {
+  background-color: #373e47;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cdd9e5;
+}
 
 @layer components {
   .debug {

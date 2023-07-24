@@ -7,16 +7,15 @@ type RepositoriesProps = {};
 
 const Repositories: React.FC<RepositoriesProps> = () => {
   let { repos } = useSelector((store: RootState) => store);
-  // if (repos) {
-  //   repos = [...repos].sort(
-  //     (a, b) => new Date(a.updated_at) - new Date(b.updated_at)
-  //   );
-  // }
 
   return (
-    <div className="border-t border-solid border-header-icon mt-3">
-      {repos &&
-        repos.map((repo: any) => <Repository key={repo.id} repoData={repo} />)}
+    <div>
+      <ul className="border-t border-solid border-header-icon mt-3">
+        {repos &&
+          repos.map((repo: any) => (
+            <Repository key={repo.id} repoData={repo} />
+          ))}
+      </ul>
       <div className="text-sm ml-8 main1:mx-auto   w-fit mt-3 pb-8">
         <button disabled className="text-header-icon mr-3">
           &lt; Previous
